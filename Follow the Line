@@ -1,0 +1,78 @@
+let button;
+var timerValue = 0;
+var count = 0;
+var minutes = 0;
+var x = 80;
+var y = 380;
+
+var flag = 0;
+function setup() {
+createCanvas(800, 600);
+button1 = createButton("Try Again");
+button1.style('background-color', 'orange');
+button2 = createButton("Start");
+button2.style('background-color', 'orange');
+setInterval(timeIt, 1000);
+}
+function draw() {
+background(220);
+fill(10,60,130);
+  
+//buttons 
+button1.size(120,40);
+button1.position(550,450);
+button1.mouseClicked(moveButton);
+button2.size(120,40);
+button2.position(400,450);
+button2.mouseClicked(startGame);
+//game pieces
+ellipse(mouseX, mouseY, 18, 18);
+  noFill();
+  curve(25, 400, 150, 300, 250, 150, 450, 200)
+  curve(70, 450, 250, 150, 325, 350, 500, 200)
+   curve(30, 20, 325, 350, 420, 210, 500, 200)
+  curve(30, 20, 420, 210, 480, 130, 575, 65)
+  curve(130, 500, 480, 130, 525, 300, 500, 200)
+  curve(20, 20, 525, 300, 550, 240, 600, 50)
+  curve(500,500, 550, 240, 650, 300, 700,700)
+  
+fill(10,60,130);
+
+//text
+textSize(40);
+text("Follow the Line", 275, 80);
+textSize(30);
+if(timerValue <= 9)
+text( minutes +":0" + timerValue, 120, 480);
+else
+text( minutes +":" + timerValue, 120, 480);
+
+text('Score', 20, 60);
+text(count, 70, 100);
+
+
+
+
+}
+//button functions
+
+function startGame(){
+flag = 1;
+}
+function moveButton() {
+x = 80;
+y = 380;
+timerValue = 0;minutes = 0;
+count = 0;
+flag = 0;
+}
+function timeIt() {
+if (timerValue >= 0 && flag == 1) {
+timerValue++;
+if(timerValue == 60){
+minutes++;
+timerValue = 0;
+  
+} 
+}
+}
